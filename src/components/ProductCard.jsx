@@ -3,8 +3,9 @@ import { BiDotsHorizontal } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { deleteDatafunc } from "../redux/dataSlice";
 import { modalFunc } from "../redux/modalSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Button from "./Button";
 
 const ProductCard = ({ dt }) => {
   const [openEdit, setOpenEdit] = useState(false);
@@ -17,12 +18,35 @@ const ProductCard = ({ dt }) => {
     navigate(`/?update=${dt?.id}`);
   };
   return (
-    <div className="w-[200px] h-[200px] relative m-2 rounded-md">
-      <img src={dt?.url} className="w-full h-full rounded-md" alt="" />
-      <div className="absolute left-0 bottom-0 bg-indigo-600 text-white w-full px-2">
-        <div className="text-lg font-semibold">{dt?.name}</div>
-        <div>{dt?.price}$</div>
+    <div key={dt?.id} className="group relative">
+      <Link to={`/detail/${dt?.id}`}>
+        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+          <img
+            src={dt?.url}
+            alt=""
+            className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+          />
+        </div>
+        <div className="mt-4 flex justify-between flex-col px-2">
+          <div>
+            <h3 className="text-2xl text-gray-900">
+              <span aria-hidden="true" className="absolute inset-0" />
+              {dt?.name}
+            </h3>
+          </div>
+          <div className="flex flex-row justify-between">
+            {" "}
+            <p className="text-xs font-medium text-gray-400 italic">
+              {dt?.category}
+            </p>
+            <p className="text-sm font-medium text-gray-900">{dt?.price}$</p>
+          </div>
+        </div>
+      </Link>
+      <div className="flex items-center justify-between">
+        <Button btnText={"Add to Cart"} />
       </div>
+
       <div
         onClick={() => setOpenEdit(!openEdit)}
         className="absolute top-0 right-2"

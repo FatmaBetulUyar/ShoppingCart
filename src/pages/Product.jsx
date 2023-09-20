@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { createDatafunc, updateDatafunc } from "../redux/dataSlice";
 import { modalFunc } from "../redux/modalSlice";
 import { useLocation, useNavigate } from "react-router-dom";
+import SelectMenu from "../components/SelectMenu";
 
 const Product = () => {
   //ilk modal modalSlice > initialState > modal
@@ -16,9 +17,14 @@ const Product = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
+
   const [productInfo, setProductInfo] = useState({
     name: "",
     price: "",
+    category: {
+      id: "",
+      name: "",
+    },
     url: "",
   });
 
@@ -39,12 +45,15 @@ const Product = () => {
   useEffect(() => {
     if (loc) {
       setProductInfo(data.find((dt) => dt.id === locAsNumber));
-    }
-    else {
+    } else {
       // loc yoksa veya uygun bir veri bulunamazsa productInfo'yu temizle
       setProductInfo({
         name: "",
         price: "",
+        category: {
+          id: "",
+          name: "",
+        },
         url: "",
       });
     }
@@ -60,7 +69,12 @@ const Product = () => {
     dispatch(modalFunc());
     navigate("/");
   };
-
+  const handleCategoryChange = (selectedCategory) => {
+    setProductInfo((prevProductInfo) => ({
+      ...prevProductInfo,
+      category: selectedCategory,
+    }));
+  };
   const contentModal = (
     <>
       {productInfo && (
@@ -81,15 +95,39 @@ const Product = () => {
             id={"price"}
             onChange={(e) => onChangeFunc(e, "price")}
           />
-          <Input
-            type={"file"}
-            placeholder={"Resim seç"}
-            name={"url"}
-            id={"url"}
-            onChange={(e) => onChangeFunc(e, "url")}
+          <SelectMenu
+            onChange={(selectedCategory) =>
+              handleCategoryChange(selectedCategory)
+            }
           />
+          {console.log("product info : ", productInfo)}
+          <div className="flex items-center space-x-6 mx-3 my-4">
+            <div className="shrink-0">
+              <img
+                className="h-20 w-16 object-cover rounded-full"
+                src="https://cdn.pixabay.com/photo/2016/04/01/09/42/buy-1299519_1280.png"
+                alt="Current profile photo"
+              />
+            </div>
+            <label className="block">
+              <span className="sr-only">Choose profile photo</span>
+              <input
+                type="file"
+                className="block w-full text-sm text-slate-500
+        file:mr-4 file:py-2 file:px-4
+        file:rounded-full file:border-0
+        file:text-sm file:font-semibold
+        file:bg-violet-50 file:text-violet-700
+        hover:file:bg-violet-100"
+                name={"url"}
+                id={"url"}
+                onChange={(e) => onChangeFunc(e, "url")}
+              />
+            </label>
+          </div>
+
           <Button
-            btnText={loc ? "Ürün Güncelle" : "Ürün Oluştur"}
+            btnText={loc ? "Update the Product" : "Add a Product"}
             onClick={loc ? buttonUpdateFunc : buttonFunc}
           />
         </>
@@ -101,16 +139,20 @@ const Product = () => {
     dt.name.toLowerCase().includes(keyword)
   );
   return (
-    <div>
-      <div className="flex items-center flex-wrap">
-        {filteredItems?.map((dt, i) => (
-          <ProductCard key={i} dt={dt} />
-        ))}
+    <div className="bg-white">
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+          Customers also purchased
+        </h2>
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {filteredItems?.map((dt, i) => (
+            <ProductCard key={i} dt={dt} />
+          ))}
+        </div>
       </div>
-
       {modal && (
         <Modal
-          title={loc ? "Ürün Güncelle" : "Ürün Oluştur"}
+          title={loc ? "Update the Product" : "Add a Product"}
           content={contentModal}
         />
       )}

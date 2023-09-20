@@ -22,9 +22,9 @@ const Product = () => {
     name: "",
     price: "",
     category: {
-      id: "",
-      name: "",
-    },
+      id:"",
+      name: ""
+  },
     url: "",
   });
 
@@ -51,9 +51,9 @@ const Product = () => {
         name: "",
         price: "",
         category: {
-          id: "",
-          name: "",
-        },
+          id:"",
+          name: ""
+      },
         url: "",
       });
     }
@@ -69,12 +69,12 @@ const Product = () => {
     dispatch(modalFunc());
     navigate("/");
   };
-  const handleCategoryChange = (selectedCategory) => {
-    setProductInfo((prevProductInfo) => ({
-      ...prevProductInfo,
-      category: selectedCategory,
-    }));
-  };
+ const handleCategoryChange = (selectedCategory) => {
+  setProductInfo((prevProductInfo) => ({
+    ...prevProductInfo,
+    category: selectedCategory,
+  }));
+};
   const contentModal = (
     <>
       {productInfo && (
@@ -95,12 +95,7 @@ const Product = () => {
             id={"price"}
             onChange={(e) => onChangeFunc(e, "price")}
           />
-          <SelectMenu
-            onChange={(selectedCategory) =>
-              handleCategoryChange(selectedCategory)
-            }
-          />
-          {console.log("product info : ", productInfo)}
+          <SelectMenu  onChange={(selectedCategory) => handleCategoryChange(selectedCategory)}/>{console.log("product info : ",productInfo)}
           <div className="flex items-center space-x-6 mx-3 my-4">
             <div className="shrink-0">
               <img
@@ -127,7 +122,7 @@ const Product = () => {
           </div>
 
           <Button
-            btnText={loc ? "Update the Product" : "Add a Product"}
+            btnText={loc ? "Ürün Güncelle" : "Ürün Oluştur"}
             onClick={loc ? buttonUpdateFunc : buttonFunc}
           />
         </>
@@ -152,7 +147,7 @@ const Product = () => {
       </div>
       {modal && (
         <Modal
-          title={loc ? "Update the Product" : "Add a Product"}
+          title={loc ? "Ürün Güncelle" : "Ürün Oluştur"}
           content={contentModal}
         />
       )}

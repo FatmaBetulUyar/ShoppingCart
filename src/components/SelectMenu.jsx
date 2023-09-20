@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +11,8 @@ function classNames(...classes) {
 // SelectMenu bileşeni
 export default function SelectMenu({ onChange }) {
   const selectedCategory = useSelector((state) => state.category.selected);
-  const categories = useSelector((state) => state.category.categories); 
-  const dispatch = useDispatch(); 
+  const categories = useSelector((state) => state.category.categories); // Kategorileri seçin
+  const dispatch = useDispatch(); // useDispatch'i kullanarak bir eylemi tetiklemek için dispatch'i alın
   console.log("cate", categories);
   return (
     <Listbox

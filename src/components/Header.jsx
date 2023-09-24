@@ -5,11 +5,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { modalFunc } from "../redux/modalSlice";
 import { searchingDatafunc, sortingDatafunc } from "../redux/dataSlice";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 const Header = () => {
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
+  const [totalQuantity, setQuantity] = useState(0);
+
   console.log("cart length", cart.length);
-  const itemCount = cart.length;
+
+  const calculateTotal = () => {
+    let total = 0;
+    for (const item of cart) {
+      total += parseFloat(item.quantity);
+    }
+    setQuantity(total);
+    console.log("total", total);
+  };
+
+  useEffect(() => {
+    calculateTotal();
+  }, [cart]);
+
   return (
     <div className="flex items-center justify-between bg-teal-300 text-white px-4 py-3">
       <Link to="/">
@@ -59,12 +75,20 @@ const Header = () => {
         >
           <MdPostAdd size={24} />
         </div>
-        <div className="bg-teal-600 w-10 h-10  rounded-full flex items-center justify-center cursor-pointer">
-          <Link to="/cart">
-            <IoMdCart size={24} />
-            {itemCount > 0 && <span className="">{itemCount}</span>}
-          </Link>
-        </div>
+
+        <Link to="/cart">
+          <div
+            type="button"
+            className=" w-10 h-10 relative inline-flex items-center p-2 text-sm font-medium text-center text-white bg-teal-600 rounded-full hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            <IoMdCart size={28} />
+            {totalQuantity > 0 && (
+              <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-pink-400 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+                <span className="">{totalQuantity}</span>{" "}
+              </div>
+            )}
+          </div>
+        </Link>
       </div>
     </div>
   );

@@ -23,9 +23,9 @@ const Product = () => {
     name: "",
     price: "",
     category: {
-      id:"",
-      name: ""
-  },
+      id: "",
+      name: "",
+    },
     url: "",
   });
 
@@ -52,9 +52,9 @@ const Product = () => {
         name: "",
         price: "",
         category: {
-          id:"",
-          name: ""
-      },
+          id: "",
+          name: "",
+        },
         url: "",
       });
     }
@@ -70,16 +70,16 @@ const Product = () => {
     dispatch(modalFunc());
     navigate("/");
   };
- const handleCategoryChange = (selectedCategory) => {
-  setProductInfo((prevProductInfo) => ({
-    ...prevProductInfo,
-    category: selectedCategory,
-  }));
-};
+  const handleCategoryChange = (selectedCategory) => {
+    setProductInfo((prevProductInfo) => ({
+      ...prevProductInfo,
+      category: selectedCategory,
+    }));
+  };
 
-const handleAddToCart = (product) => {
-  dispatch(addCartFunc(product));
-};
+  const handleAddToCart = (product) => {
+    dispatch(addCartFunc(product));
+  };
   const contentModal = (
     <>
       {productInfo && (
@@ -100,7 +100,12 @@ const handleAddToCart = (product) => {
             id={"price"}
             onChange={(e) => onChangeFunc(e, "price")}
           />
-          <SelectMenu  onChange={(selectedCategory) => handleCategoryChange(selectedCategory)}/>{console.log("product info : ",productInfo)}
+          <SelectMenu
+            onChange={(selectedCategory) =>
+              handleCategoryChange(selectedCategory)
+            }
+          />
+          {console.log("product info : ", productInfo)}
           <div className="flex items-center space-x-6 mx-3 my-4">
             <div className="shrink-0">
               <img
@@ -142,11 +147,11 @@ const handleAddToCart = (product) => {
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-         Products
+          Products
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {filteredItems?.map((dt, i) => (
-            <ProductCard key={i} dt={dt} onClick={()=>handleAddToCart(dt)} />
+            <ProductCard key={i} dt={dt} onClick={() => handleAddToCart(dt)} />
           ))}
         </div>
       </div>

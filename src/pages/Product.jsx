@@ -8,6 +8,7 @@ import { createDatafunc, updateDatafunc } from "../redux/dataSlice";
 import { modalFunc } from "../redux/modalSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 import SelectMenu from "../components/SelectMenu";
+import { addCartFunc } from "../redux/cartSlice";
 
 const Product = () => {
   //ilk modal modalSlice > initialState > modal
@@ -75,6 +76,10 @@ const Product = () => {
     category: selectedCategory,
   }));
 };
+
+const handleAddToCart = (product) => {
+  dispatch(addCartFunc(product));
+};
   const contentModal = (
     <>
       {productInfo && (
@@ -112,7 +117,7 @@ const Product = () => {
         file:mr-4 file:py-2 file:px-4
         file:rounded-full file:border-0
         file:text-sm file:font-semibold
-        file:bg-violet-50 file:text-violet-700
+        file:bg-teal-70 file:text-teal-400
         hover:file:bg-violet-100"
                 name={"url"}
                 id={"url"}
@@ -137,11 +142,11 @@ const Product = () => {
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-          Customers also purchased
+         Products
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {filteredItems?.map((dt, i) => (
-            <ProductCard key={i} dt={dt} />
+            <ProductCard key={i} dt={dt} onClick={()=>handleAddToCart(dt)} />
           ))}
         </div>
       </div>

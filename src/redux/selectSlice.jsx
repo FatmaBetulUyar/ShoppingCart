@@ -40,7 +40,7 @@ const initialState = {
         },
         {
           id: 9,
-          name: "Claudie Smitham",
+          name: "Other",
         },
         {
           id: 10,

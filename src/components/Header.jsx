@@ -1,14 +1,17 @@
 import { MdPostAdd } from "react-icons/md";
 import { IoMdCart } from "react-icons/io";
 import { HiMiniShoppingBag } from "react-icons/hi2";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { modalFunc } from "../redux/modalSlice";
 import { searchingDatafunc, sortingDatafunc } from "../redux/dataSlice";
 import { Link } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.cart);
+  console.log("cart length", cart.length);
+  const itemCount = cart.length;
   return (
-    <div className="flex items-center justify-between bg-indigo-600 text-white px-4 py-3">
+    <div className="flex items-center justify-between bg-teal-300 text-white px-4 py-3">
       <Link to="/">
         <div className="flex items-center justify-around">
           {" "}
@@ -24,13 +27,13 @@ const Header = () => {
             name=""
             id=""
           >
-            <option value="asc">ARTAN</option>
-            <option value="desc">AZALAN</option>
+            <option value="asc">asc order by price</option>
+            <option value="desc">desc order by price</option>
           </select>
         </div>
         <label className="relative block">
           <span className="sr-only">Search</span>
-          <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+          <span className="absolute inset-y-0 left-0 flex items-center pl-2 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-3 w-3 fill-slate-300"
@@ -52,13 +55,14 @@ const Header = () => {
         </label>
         <div
           onClick={() => dispatch(modalFunc())}
-          className="bg-indigo-800 w-10 h-10  rounded-full flex items-center justify-center cursor-pointer"
+          className="bg-teal-600 w-10 h-10  rounded-full flex items-center justify-center cursor-pointer"
         >
           <MdPostAdd size={24} />
         </div>
-        <div className="bg-indigo-800 w-10 h-10  rounded-full flex items-center justify-center cursor-pointer">
+        <div className="bg-teal-600 w-10 h-10  rounded-full flex items-center justify-center cursor-pointer">
           <Link to="/cart">
             <IoMdCart size={24} />
+            {itemCount > 0 && <span className="">{itemCount}</span>}
           </Link>
         </div>
       </div>

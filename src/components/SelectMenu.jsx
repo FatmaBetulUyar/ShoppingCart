@@ -14,23 +14,27 @@ export default function SelectMenu({ onChange }) {
   const categories = useSelector((state) => state.category.categories); // Kategorileri seçin
   const dispatch = useDispatch(); // useDispatch'i kullanarak bir eylemi tetiklemek için dispatch'i alın
   console.log("cate", categories);
+
   return (
     <Listbox
-    value={selectedCategory} // Daha sonra kategoriyi doğrudan seçilen değer olarak kullanacağız
-    onChange={(newValue) => {
-      dispatch(selectItem(newValue)); // Yeni seçilen kategoriye göre Redux içeriğini güncelle
-      onChange(newValue); // Ebeveyn bileşende seçimi güncelle
-    }}
+      value={selectedCategory?.name || "other"} // Daha sonra kategoriyi doğrudan seçilen değer olarak kullanacağız
+      onChange={(newValue) => {
+        console.log("new vaalue: ", newValue);
+        dispatch(selectItem(newValue)); // Yeni seçilen kategoriye göre Redux içeriğini güncelle
+        onChange(newValue); // Ebeveyn bileşende seçimi güncelle
+      }}
     >
       {({ open }) => (
         <>
           <div className="relative mt-2">
             <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
               <span className="flex items-center">
-                <span className=" block truncate">
-                  {selectedCategory
-                    ? selectedCategory.name
-                    : "Bir Kategori Seçin"}
+                <span className="block truncate">
+                  {selectedCategory ? (
+                    selectedCategory.name
+                  ) : (
+                    <span className="text-gray-400">Bir Kategori Seçin</span>
+                  )}
                 </span>
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
@@ -76,7 +80,7 @@ export default function SelectMenu({ onChange }) {
                         {selected ? (
                           <span
                             className={classNames(
-                              active ? "text-white" : "text-indigo-600",
+                              active ? "text-white" : "text-pink-600",
                               "absolute inset-y-0 right-0 flex items-center pr-4"
                             )}
                           >

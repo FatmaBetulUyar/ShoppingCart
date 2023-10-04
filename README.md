@@ -1,6 +1,6 @@
 # React Vite Shopping Cart App
 
-This project contains a simple shopping cart application built with <b>React Vite.</b> The application allows users to add various products to their cart, view the cart contents, and remove items from the cart, providing a basic shopping experience. It also utilizes popular libraries and tools like <b>Redux</b>, <b>React Router Dom</b>, and <b>Tailwind CSS</b>.
+This project contains a simple shopping cart application built with <b>React Vite.</b> The application allows users to add various products to their cart, view the cart contents, and remove items from the cart, providing a basic shopping experience. It also utilizes popular libraries and tools like <b>Redux</b>, <b>React Router Dom</b>,  <b>Tailwind CSS</b> and <b>Netlify</b>.
 
 ![shop-1](src/assets/shop-2.jpg)
 
@@ -61,6 +61,9 @@ This shopping cart application includes the following basic features:
   ![shop-1](src/assets/shop-9.jpg)
 - Click the "Update" or "Remove" button to <b>update</b>  or <b>remove</b> a product.<br>
   ![shop-1](src/assets/shop-4.jpg)
+
+ ## Live Demo
+ You can view a live demo of this project  [here](https://magenta-otter-8213be.netlify.app/).
 
 ## Technologies and Libraries Used
 

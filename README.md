@@ -45,22 +45,24 @@ npm start
 ## Usage
 
 This shopping cart application includes the following basic features:
-- Click the "Create a Product" button to add new product.
+- Click the "Create a Product" button to <b>add new product.</b><br>
   ![shop-1](src/assets/shop-1.jpg)
-- Click the "Add to Cart" button to add products to the cart.
+- Click the "Add to Cart" button to <b>add products to the cart.</b><br>
   ![shop-1](src/assets/shop-5.jpg)
-- Click the "Cart" button to view the cart.
+- Click the "Cart" button to <b>view the cart.</b><br>
   ![shop-1](src/assets/shop-6.jpg)
-- Click the "-" and "+" buttons to increase and decrease number of products in the cart.
+- Click the "-" and "+" buttons to <b>increase</b> and <b>decrease</b> number of products in the cart.<br>
   ![shop-1](src/assets/shop-7.jpg)
-- Click the "Remove" button to remove product from the cart.
+- Click the "Remove" button to <b>remove product</b> from the cart.<br>
  ![shop-1](src/assets/shop-8.jpg)
-- Click the "Search" button to search items.
+- Click the "Search" button to <b>search</b> items.
   ![shop-1](src/assets/shop-10.jpg)
-- Click the "Order" button to order products by desc or asc.
+- Click the "Order" button to <b>order</b>  products by desc or asc.<br>
   ![shop-1](src/assets/shop-9.jpg)
-- Click the "Update" or "Remove" button to update or remove a product.
+- Click the "Update" or "Remove" button to <b>update</b>  or <b>remove</b> a product.<br>
   ![shop-1](src/assets/shop-4.jpg)
+
+## Technologies and Libraries Used
 
 This project utilizes the following technologies and libraries:
 

@@ -8,6 +8,9 @@ This project contains a simple shopping cart application built with <b>React Vit
 
 These instructions will guide you through the steps required to run the project in a local development environment.
 
+ ## Live Demo
+ You can view a live demo of this project  [here](https://magenta-otter-8213be.netlify.app/).
+
 ### Prerequisites
 
 To run this project, you need the following software installed:
@@ -62,8 +65,6 @@ This shopping cart application includes the following basic features:
 - Click the "Update" or "Remove" button to <b>update</b>  or <b>remove</b> a product.<br>
   ![shop-1](src/assets/shop-4.jpg)
 
- ## Live Demo
- You can view a live demo of this project  [here](https://magenta-otter-8213be.netlify.app/).
 
 ## Technologies and Libraries Used
 

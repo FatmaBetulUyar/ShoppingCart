@@ -41,11 +41,7 @@ const initialState = {
         {
           id: 9,
           name: "Other",
-        },
-        {
-          id: 10,
-          name: "Emil Schaefer",
-        },
+        }
       ], 
 };
 

@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,20 +8,19 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-// SelectMenu bileşeni
 export default function SelectMenu({ onChange }) {
   const selectedCategory = useSelector((state) => state.category.selected);
-  const categories = useSelector((state) => state.category.categories); // Kategorileri seçin
-  const dispatch = useDispatch(); // useDispatch'i kullanarak bir eylemi tetiklemek için dispatch'i alın
+  const categories = useSelector((state) => state.category.categories); 
+  const dispatch = useDispatch(); 
   console.log("cate", categories);
 
   return (
     <Listbox
-      value={selectedCategory?.name || "other"} // Daha sonra kategoriyi doğrudan seçilen değer olarak kullanacağız
+      value={selectedCategory?.name || "other"}
       onChange={(newValue) => {
         console.log("new vaalue: ", newValue);
-        dispatch(selectItem(newValue)); // Yeni seçilen kategoriye göre Redux içeriğini güncelle
-        onChange(newValue); // Ebeveyn bileşende seçimi güncelle
+        dispatch(selectItem(newValue)); 
+        onChange(newValue); 
       }}
     >
       {({ open }) => (
@@ -33,7 +32,7 @@ export default function SelectMenu({ onChange }) {
                   {selectedCategory ? (
                     selectedCategory.name
                   ) : (
-                    <span className="text-gray-400">Bir Kategori Seçin</span>
+                    <span className="text-gray-400">Choose a Category</span>
                   )}
                 </span>
               </span>

@@ -29,6 +29,8 @@ const Product = () => {
     url: "",
   });
 
+
+
   const onChangeFunc = (e, type) => {
     if (type === "url") {
       setProductInfo((prev) => ({
@@ -75,6 +77,7 @@ const Product = () => {
       ...prevProductInfo,
       category: selectedCategory,
     }));
+    console.log("selected category:",selectedCategory);
   };
 
   const handleAddToCart = (product) => {
@@ -87,7 +90,7 @@ const Product = () => {
           <Input
             value={productInfo.name}
             type={"text"}
-            placeholder={"Ürün Ekle"}
+            placeholder={"Add a Product"}
             name={"name"}
             id={"name"}
             onChange={(e) => onChangeFunc(e, "name")}
@@ -95,7 +98,7 @@ const Product = () => {
           <Input
             value={productInfo.price}
             type={"text"}
-            placeholder={"Fiyat Ekle"}
+            placeholder={"Add a Price"}
             name={"price"}
             id={"price"}
             onChange={(e) => onChangeFunc(e, "price")}
@@ -115,7 +118,7 @@ const Product = () => {
               />
             </div>
             <label className="block">
-              <span className="sr-only">Choose profile photo</span>
+              <span className="sr-only">Choose a Photo</span>
               <input
                 type="file"
                 className="block w-full text-sm text-slate-500
@@ -132,7 +135,7 @@ const Product = () => {
           </div>
 
           <Button
-            btnText={loc ? "Ürün Güncelle" : "Ürün Oluştur"}
+            btnText={loc ? "Update the Product" : "Create a Product"}
             onClick={loc ? buttonUpdateFunc : buttonFunc}
           />
         </>
@@ -146,9 +149,6 @@ const Product = () => {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-          Products
-        </h2>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {filteredItems?.map((dt, i) => (
             <ProductCard key={i} dt={dt} onClick={() => handleAddToCart(dt)} />
@@ -157,7 +157,7 @@ const Product = () => {
       </div>
       {modal && (
         <Modal
-          title={loc ? "Ürün Güncelle" : "Ürün Oluştur"}
+          title={loc ? "Update the Product" : "Create a Product"}
           content={contentModal}
         />
       )}

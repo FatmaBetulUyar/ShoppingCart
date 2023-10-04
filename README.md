@@ -1,8 +1,71 @@
-# React + Vite
+# React Vite Shopping Cart App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project contains a simple shopping cart application built with <b>React Vite.</b> The application allows users to add various products to their cart, view the cart contents, and remove items from the cart, providing a basic shopping experience. It also utilizes popular libraries and tools like <b>Redux</b>, <b>React Router Dom</b>, and <b>Tailwind CSS</b>.
 
-Currently, two official plugins are available:
+![shop-1](src/assets/shop-2.jpg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
+
+These instructions will guide you through the steps required to run the project in a local development environment.
+
+### Prerequisites
+
+To run this project, you need the following software installed:
+
+- [Node.js](https://nodejs.org/) - The platform used to run JavaScript.
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) - Package management.
+
+### Installation
+
+1. Clone this project to your local machine or download it as a ZIP file.
+
+```bash
+git clone https://github.com/FatmaBetulUyar/ShoppingCart.git
+```
+
+2. Navigate to the project directory.
+
+```bash
+cd ShoppingCart
+```
+
+3. Install the required dependencies by running the following command:
+
+```bash
+npm install
+```
+
+4. Once the project dependencies are successfully installed, start the development server with the following command:
+
+```bash
+npm start
+```
+5. The application will start on a local server, and your default web browser will open automatically. You can view the application by visiting `http://localhost:3000` in your browser.
+
+## Usage
+
+This shopping cart application includes the following basic features:
+- Click the "Create a Product" button to add new product.
+  ![shop-1](src/assets/shop-1.jpg)
+- Click the "Add to Cart" button to add products to the cart.
+  ![shop-1](src/assets/shop-5.jpg)
+- Click the "Cart" button to view the cart.
+  ![shop-1](src/assets/shop-6.jpg)
+- Click the "-" and "+" buttons to increase and decrease number of products in the cart.
+  ![shop-1](src/assets/shop-7.jpg)
+- Click the "Remove" button to remove product from the cart.
+ ![shop-1](src/assets/shop-8.jpg)
+- Click the "Search" button to search items.
+  ![shop-1](src/assets/shop-10.jpg)
+- Click the "Order" button to order products by desc or asc.
+  ![shop-1](src/assets/shop-9.jpg)
+- Click the "Update" or "Remove" button to update or remove a product.
+  ![shop-1](src/assets/shop-4.jpg)
+
+This project utilizes the following technologies and libraries:
+
+- [React](https://reactjs.org/) - A JavaScript library used to build the user interface.
+- [React Vite](https://vitejs.dev/) - A fast JavaScript build tool that provides a quick development environment.
+- [Redux](https://redux.js.org/) - A JavaScript library for state management.
+- [React Router Dom](https://reactrouter.com/web/guides/quick-start) - A library for navigation in React applications.
+- [Tailwind CSS](https://tailwindcss.com/) - A customizable CSS framework for rapid UI development.
